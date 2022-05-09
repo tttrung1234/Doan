@@ -1,0 +1,125 @@
+{% extends "HomePage.html" %}
+
+
+{% block content %}
+{%load static%}
+
+
+
+{%for post in post_data%}
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="panel panel-primary" data-collapsed="0">
+    
+      <div class="panel-heading">
+        <div class="panel-title">
+          Bài viết
+        </div>
+        
+        <div class="panel-options">
+          
+          <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+         
+          <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+        </div>
+      </div>
+      
+      <div class="panel-body">
+        
+        
+        <div class="thumbnail-highlight">
+
+          <div class="profile-env">
+
+            <section class="profile-feed">
+              <div class="profile-stories">
+                <article class="story">
+                
+               
+
+                
+                  <iframe srcdoc="<html><body>{{post.html}}</body></html>" height="400" width="100%"></iframe>
+               
+           
+               
+               
+
+
+               
+                  
+                  <div class="story-content">
+                    
+                    
+                    
+                    <!-- story like and comment link -->
+                    <footer>
+                      <a href="#" >
+                        <i class="entypo-thumbs-up"></i>
+                        Thích <span></span>
+                      </a>
+                      
+                    
+                      <a href="#">
+                        <i class="entypo-forward"></i>
+                        Chia sẻ <span></span>
+                      </a>
+                      <a href="#">
+                        <i class="entypo-flag"></i>
+                        Báo cáo <span></span>
+                      </a>
+
+                      <a href="#">
+                        <i class="entypo-leaf"></i>
+                        Không ảnh hưởng <span></span>
+                      </a>
+
+                      	<!-- story comments -->
+                      <ul class="comments">						
+                      
+                        <li class="comment-form">
+                          <div class="user-comment-thumb">
+                            <img src="https://scontent.fhan9-1.fna.fbcdn.net/v/t39.30808-1/279914425_3196240863993920_4081436819893974746_n.jpg?stp=c36.0.60.60a_cp0_dst-jpg_p60x60&_nc_cat=106&ccb=1-5&_nc_sid=7206a8&_nc_ohc=AeJfVCB5McsAX_sYuQM&_nc_ht=scontent.fhan9-1.fna&oh=00_AT-b2WCiYRlQvL_M--df_oVDfCKcYH1VVsitVpAeHBplzw&oe=62797184"alt="" class="img-circle" width="30"/>
+                          </div>
+                          
+                          <div class="user-comment-content">
+                            
+                            <textarea class="form-control autogrow" placeholder="Viết bình luận..."></textarea>
+                            <button class="btn"><i class="entypo-chat"></i></button>
+                            
+                          </div>
+                        </li>
+                        
+                      </ul>
+                    </footer>
+                    
+                  </div>
+                  
+                </article>
+              </div>
+            </section>
+
+            
+          </div>
+
+
+        
+          
+        </div>
+        
+        
+      </div>
+      
+    </div>
+
+    
+  
+  </div>
+
+</div>
+  
+{%endfor%}
+  
+    
+{% endblock %}

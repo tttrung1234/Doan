@@ -1,0 +1,9 @@
+[13528:10424:0505/073858.162:WARNING:backend_impl.cc(1827)] Destroying invalid entry.
+[13528:4964:0505/073901.365:INFO:CONSOLE(1)] "[Report Only] Refused to frame 'https://www.google.com.vn/' because it violates the following Content Security Policy directive: "frame-src *.doubleclick.net *.google.com *.facebook.com www.googleadservices.com *.fbsbx.com fbsbx.com data: www.instagram.com *.fbcdn.net https://paywithmybank.com".
+", source: https://m.facebook.com/common/referer_frame.php (1)
+[13528:4964:0505/073901.365:INFO:CONSOLE(1)] "Refused to frame 'https://www.google.com.vn/' because it violates the following Content Security Policy directive: "frame-src *.doubleclick.net *.google.com *.facebook.com www.googleadservices.com *.fbsbx.com fbsbx.com data: www.instagram.com *.fbcdn.net https://paywithmybank.com".
+", source: https://m.facebook.com/common/referer_frame.php (1)
+[13528:4964:0505/073901.398:INFO:CONSOLE(6772)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6772)
+[13528:4964:0505/073906.607:ERROR:device_event_log_impl.cc(214)] [07:39:06.615] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
+[13528:4964:0505/073906.616:ERROR:device_event_log_impl.cc(214)] [07:39:06.617] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
+[13528:4964:0505/073913.371:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
