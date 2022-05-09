@@ -155,13 +155,6 @@ def ThucThiLogin_getCookie():
  # get post facebook#################3
 
 
-def test(request):
-    if 'city' in request.GET:
-        city = request.GET.get('city')
-        print(city)
-        return HttpResponse(city)
-
-
 def Getpost_tuyentruyen(request):
     import requests
     html = None
@@ -172,17 +165,21 @@ def Getpost_tuyentruyen(request):
 
     post = {
         'html': html,
-        'url': url,
-        'id': 1,
+        'url': 'url111111111111',
+        'id': 11111111,
     }
     post_data.append(post)
     post = {
         'html': html,
-        'url': url,
-        'id': 2,
+        'url': 'url2222222222222',
+        'id': 22222222,
     }
     post_data.append(post)
+
     content = {'post_data': post_data}
+    if 'city' in request.GET:
+        city = request.GET.get('city')
+        print(city)
 
     return render(request, "autofb.html", content)
 
