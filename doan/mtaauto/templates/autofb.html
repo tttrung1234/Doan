@@ -55,26 +55,34 @@
                     
                     <!-- story like and comment link -->
                     <footer>
-                      <a href="#" >
+                     <form method="GET">
+                      
+                      <label for="city"></label>
+                      <input type="text" name="city" placeholder="city........">
+                      <a href="{% url 'test'%}" type="submit" >
                         <i class="entypo-thumbs-up"></i>
                         Thích <span></span>
                       </a>
+                     </form>
+                       
+                        
                       
-                    
-                      <a href="#">
-                        <i class="entypo-forward"></i>
-                        Chia sẻ <span></span>
-                      </a>
-                      <a href="#">
-                        <i class="entypo-flag"></i>
-                        Báo cáo <span></span>
-                      </a>
-
-                      <a href="#">
-                        <i class="entypo-leaf"></i>
-                        Không ảnh hưởng <span></span>
-                      </a>
-
+                        <a href="#">
+                          <i class="entypo-forward"></i>
+                          Chia sẻ <span></span>
+                        </a>
+                        <a href="#">
+                          <i class="entypo-flag"></i>
+                          Báo cáo <span></span>
+                        </a>
+  
+                        <a href="#">
+                          <i class="entypo-leaf"></i>
+                          Không ảnh hưởng <span></span>
+                        </a>
+  
+                     
+                      
                       	<!-- story comments -->
                       <ul class="comments">						
                       

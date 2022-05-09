@@ -155,6 +155,13 @@ def ThucThiLogin_getCookie():
  # get post facebook#################3
 
 
+def test(request):
+    if 'city' in request.GET:
+        city = request.GET.get('city')
+        print(city)
+        return HttpResponse(city)
+
+
 def Getpost_tuyentruyen(request):
     import requests
     html = None
