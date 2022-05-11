@@ -46,6 +46,9 @@ class Cookie:
             if dk == True:
                 break
 
+    def Close_webdriver(self):
+        self.driver.close()
+
     def start_chorme(self):
 
         chrome_options = Options()
@@ -55,17 +58,26 @@ class Cookie:
         chrome_options.add_argument("--disable-images")
         self.driver = webdriver.Chrome(options=chrome_options)
 
-    def start_chorme_profile(self, UID):
+    def start_chorme_profile(self, l):
         if self.driver == None:
+            global data
+            UID = str(data[0][l])
             self.chrome_options = Options()
 
             scriptDirectory = pathlib.Path().absolute()
             self.chrome_options.add_argument(
                 f"user-data-dir={scriptDirectory}\\Profile\\"+UID)
 
-            self.chrome_options.add_argument("--window-size=540,700")
+            if(l <= 2):
+                x = l*520
+                y = 10
+            if(l > 2 and l <= 6):
+                x = (l-3)*520
+                y = 330
             self.chrome_options.add_argument("--disable-notifications")
             self.chrome_options.add_argument("--disable-images")
+            self.chrome_options.add_argument("--window-size=200,300")
+            self.chrome_options.add_argument(f"--window-position={x},{y}")
             self.driver = webdriver.Chrome(options=self.chrome_options)
 
             return 1
@@ -142,11 +154,16 @@ class Cookie:
 
 def ThucThiLogin_loadCookie(l):
     bot = Cookie()
-    bot.start_chorme_profile(data[0][l])
-    bot.load_cookie(data[0][l])
-    print(data[1][0])
-    bot.Like_post(
-        data[1][0])
+
+    bot.start_chorme_profile(l)
+    try:
+        bot.load_cookie(str(data[0][l]))
+        print(data[1][0])
+        bot.Like_post(
+            str(data[1][0]))
+    except:
+        print(f"cửa sổ {l+1} load không thành công")
+    bot.Close_webdriver()
 
 
 data = None
@@ -159,17 +176,14 @@ def AutoLike(id):
         for line in f:
             arr = [elt.strip() for elt in line.split(',')]
 
-    data = np.array((arr, arr), dtype=np.str)
+    data = np.array((arr, arr), dtype=np.uint64)
 
     lenUID = np.shape(data)[1]
-    print(id)
-    print(type(id))
     data[1][0] = id
-    print(type(data[1][0]))
 
     threads = []
 
-    for l in range(lenUID):
+    for l in range(7):
 
         threads += [threading.Thread(target=ThucThiLogin_loadCookie,
                                      args={l},)]
@@ -177,6 +191,9 @@ def AutoLike(id):
     for t in threads:
 
         t.start()
+
+    for t in threads:
+        t.join()
 
     # threads += [threading.Thread(target=ThucThiLogin_loadCookie,
     #                              args={str(data[1]), url},)]
@@ -221,8 +238,9 @@ def Getpost_tuyentruyen(request):
     # r = requests.get(url)
     # html = r.text
 
-    post_data.append(Gethtml("588999442590329"))
-    post_data.append(Gethtml("3574051732876097"))
+    post_data.append(Gethtml("150561547426531"))
+    post_data.append(Gethtml("381544837343636"))
+    post_data.append(Gethtml("3629620013929952"))
 
     content = {'post_data': post_data}
 

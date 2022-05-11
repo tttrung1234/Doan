@@ -1,3 +1,1 @@
-[19408:13824:0511/163207.644:ERROR:device_event_log_impl.cc(214)] [16:32:07.643] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
-[19408:13824:0511/163207.647:ERROR:device_event_log_impl.cc(214)] [16:32:07.646] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
-[19408:13824:0511/163229.387:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[11188:9600:0511/223638.031:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
