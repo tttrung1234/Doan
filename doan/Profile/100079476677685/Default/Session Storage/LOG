@@ -1,3 +1,8 @@
-2022/05/05-07:38:59.011 3d7c Reusing MANIFEST E:\auto\Doantotnghiep\Profile\100079476677685\Default\Session Storage/MANIFEST-000001
-2022/05/05-07:38:59.012 3d7c Recovering log #3
-2022/05/05-07:38:59.013 3d7c Reusing old log E:\auto\Doantotnghiep\Profile\100079476677685\Default\Session Storage/000003.log 
+2022/05/11-16:01:40.899 264 Reusing MANIFEST E:\Doan\doan\Profile\100079476677685\Default\Session Storage/MANIFEST-000001
+2022/05/11-16:01:40.900 264 Recovering log #3
+2022/05/11-16:01:40.901 264 Level-0 table #3: started
+2022/05/11-16:01:40.905 264 Level-0 table #3: 15979 bytes OK
+2022/05/11-16:01:40.905 264 Recovering log #4
+2022/05/11-16:01:40.906 264 Reusing old log E:\Doan\doan\Profile\100079476677685\Default\Session Storage/000004.log 
+2022/05/11-16:01:40.909 264 Delete type=0 #3
+2022/05/11-16:01:40.909 264 Delete type=2 #5

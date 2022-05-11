@@ -131,20 +131,59 @@ class Cookie:
         self.driver.refresh()
 
     # like
-    def Like_post(self, link_post):
+    def Like_post(self, id):
+
+        link_post = "https://m.facebook.com/"+id
         self.driver.get(link_post)
-        self.driver.find_element(
-            By.XPATH, "/html/body/div[1]/div/div[4]/div/div[1]/div[1]/div/div/footer/div/div/div[1]/a").click()
+        try:
+            self.driver.find_element_by_xpath('//a[text()="Thích"]').click()
+        except:
+            print("không thể Like")
 
 
-def ThucThiLogin_loadCookie(UID):
+def ThucThiLogin_loadCookie(l):
     bot = Cookie()
-    bot.start_chorme_profile(UID)
-    bot.load_cookie(UID)
+    bot.start_chorme_profile(data[0][l])
+    bot.load_cookie(data[0][l])
+    print(data[1][0])
     bot.Like_post(
-        "https://m.facebook.com/story.php?story_fbid=2893865214198532&id=100007252455965&m_entstream_source=timeline")
+        data[1][0])
 
-    input(".....................")
+
+data = None
+
+
+def AutoLike(id):
+    global data
+    arr = []
+    with open("UID.txt", "r") as f:
+        for line in f:
+            arr = [elt.strip() for elt in line.split(',')]
+
+    data = np.array((arr, arr), dtype=str)
+
+    lenUID = np.shape(data)[1]
+
+    data[1][0] = id
+
+    threads = []
+
+    for l in range(lenUID):
+
+        threads += [threading.Thread(target=ThucThiLogin_loadCookie,
+                                     args={l},)]
+
+    for t in threads:
+
+        t.start()
+
+    # threads += [threading.Thread(target=ThucThiLogin_loadCookie,
+    #                              args={str(data[1]), url},)]
+
+    # for t in threads:
+    #     t.start()
+    # for t in threads:
+    #     t.join()
 
 
 def ThucThiLogin_getCookie():
@@ -152,34 +191,63 @@ def ThucThiLogin_getCookie():
     bot.start_chorme()
     bot.load_page()
     bot.get_cookie()
+
+# get html
+
+
+def Gethtml(idpost):
+    import requests
+    urlpost = 'https://m.facebook.com/'+idpost
+    html = None
+    r = requests.get(urlpost)
+    html = r.text
+    post = {
+        'html': html,
+        'url': urlpost,
+        'id': idpost,
+    }
+    return post
+
+# end get html
  # get post facebook#################3
 
 
 def Getpost_tuyentruyen(request):
-    import requests
-    html = None
+    # import requests
+    # html = None
     post_data = []
-    url = 'https://m.facebook.com/groups/YAN.VietNamOi/permalink/5430846466948584/?m_entstream_source=feed_mobile'
-    r = requests.get(url)
-    html = r.text
+    # url = 'https://m.facebook.com/groups/YAN.VietNamOi/permalink/5430846466948584/?m_entstream_source=feed_mobile'
+    # r = requests.get(url)
+    # html = r.text
 
-    post = {
-        'html': html,
-        'url': 'url111111111111',
-        'id': 11111111,
-    }
-    post_data.append(post)
-    post = {
-        'html': html,
-        'url': 'url2222222222222',
-        'id': 22222222,
-    }
-    post_data.append(post)
+    post_data.append(Gethtml("588999442590329"))
+    post_data.append(Gethtml("311278174444102"))
 
     content = {'post_data': post_data}
-    if 'city' in request.GET:
-        city = request.GET.get('city')
-        print(city)
+
+    # xử lí like, share, cmt, bao cao, khong anh huong
+    if 'idLike' in request.GET:
+        id = request.GET.get('idLike')
+
+        AutoLike(id)
+
+    if 'idCmt' in request.GET:
+        id = request.GET.get('idCmt')
+        print("cmt thoi")
+
+    if 'idShare' in request.GET:
+        id = request.GET.get('idShare')
+        print("share thoi" + id)
+
+    if 'idBaocao' in request.GET:
+        id = request.GET.get('idBaocao')
+        print("bao cao thoi")
+
+    if 'idKAH' in request.GET:
+        id = request.GET.get('idKAH')
+        print("khong anh huong")
+
+    # end xử lí like, share, cmt, bao cao, khong anh huong
 
     return render(request, "autofb.html", content)
 

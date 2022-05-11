@@ -15,7 +15,7 @@
 
       <div class="panel-heading">
         <div class="panel-title">
-          Bài viết
+          Bài viết <a href="{{post.url}}" target="_blank">{{post.id}}</a>
         </div>
 
         <div class="panel-options">
@@ -36,31 +36,32 @@
             <section class="profile-feed">
               <div class="profile-stories">
                 <article class="story">
-                  <iframe srcdoc="<html><body>{{post.html}}</body></html>" height="400" width="100%"></iframe>
+                  
+                  <iframe srcdoc="<html><body>{{post.html}}</body></html>" height="400" width="100%" "></iframe>
                   <div class="story-content">
                     <!-- story like and comment link -->
                     <footer>
-                      <form method="GET">                     
+                                          
                         <!-- <input type="submit" value="Submit"> -->
-                        <a style="cursor: pointer;">
+                        <a style="cursor: pointer;" onclick="onClickHandleLike('{{post.id}}')">
                           
-                          <i class="entypo-thumbs-up" onclick="onClickHandleLike('{{post.id}}')"></i>
+                          <i class="entypo-thumbs-up" ></i>
                           Thích <span></span>
                         </a>
-                      </form>
+                      
 
 
 
-                      <a href="#">
+                      <a style="cursor: pointer;" onclick="onClickHandleShare('{{post.id}}')">
                         <i class="entypo-forward"></i>
                         Chia sẻ <span></span>
                       </a>
-                      <a href="#">
+                      <a style="cursor: pointer;" onclick="onClickHandleBaocao('{{post.id}}')">
                         <i class="entypo-flag"></i>
                         Báo cáo <span></span>
                       </a>
 
-                      <a href="#">
+                      <a style="cursor: pointer;" onclick="onClickHandleKhonganhhuong('{{post.id}}')">
                         <i class="entypo-leaf"></i>
                         Không ảnh hưởng <span></span>
                       </a>
@@ -118,7 +119,63 @@
       url: '/mtaauto/AutoFB',
       type: 'GET',
       data: {
-        'city': id,
+        'idLike': id,
+      },
+      success : function(data) {
+        console.log(id);
+      },
+      error : function(data) {}
+    })
+  }
+
+  function onClickHandleCmt(id) {
+    jQuery.ajax({
+      url: '/mtaauto/AutoFB',
+      type: 'GET',
+      data: {
+        'idCmt': id,
+      },
+      success : function(data) {
+        console.log(id);
+      },
+      error : function(data) {}
+    })
+  }
+
+  function onClickHandleShare(id) {
+    jQuery.ajax({
+      url: '/mtaauto/AutoFB',
+      type: 'GET',
+      data: {
+        'idShare': id,
+      },
+      success : function(data) {
+        console.log(id);
+      },
+      error : function(data) {}
+    })
+  }
+
+  function onClickHandleBaocao(id) {
+    jQuery.ajax({
+      url: '/mtaauto/AutoFB',
+      type: 'GET',
+      data: {
+        'idBaocao': id,
+      },
+      success : function(data) {
+        console.log(id);
+      },
+      error : function(data) {}
+    })
+  }
+
+  function onClickHandleKhonganhhuong(id) {
+    jQuery.ajax({
+      url: '/mtaauto/AutoFB',
+      type: 'GET',
+      data: {
+        'idKAH': id,
       },
       success : function(data) {
         console.log(id);
