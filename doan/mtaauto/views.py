@@ -132,7 +132,6 @@ class Cookie:
 
     # like
     def Like_post(self, id):
-
         link_post = "https://m.facebook.com/"+id
         self.driver.get(link_post)
         try:
@@ -160,11 +159,13 @@ def AutoLike(id):
         for line in f:
             arr = [elt.strip() for elt in line.split(',')]
 
-    data = np.array((arr, arr), dtype=str)
+    data = np.array((arr, arr), dtype=np.str)
 
     lenUID = np.shape(data)[1]
-
+    print(id)
+    print(type(id))
     data[1][0] = id
+    print(type(data[1][0]))
 
     threads = []
 
@@ -221,7 +222,7 @@ def Getpost_tuyentruyen(request):
     # html = r.text
 
     post_data.append(Gethtml("588999442590329"))
-    post_data.append(Gethtml("311278174444102"))
+    post_data.append(Gethtml("3574051732876097"))
 
     content = {'post_data': post_data}
 

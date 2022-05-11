@@ -1,8 +1,3 @@
-2022/05/11-16:01:40.899 264 Reusing MANIFEST E:\Doan\doan\Profile\100079476677685\Default\Session Storage/MANIFEST-000001
-2022/05/11-16:01:40.900 264 Recovering log #3
-2022/05/11-16:01:40.901 264 Level-0 table #3: started
-2022/05/11-16:01:40.905 264 Level-0 table #3: 15979 bytes OK
-2022/05/11-16:01:40.905 264 Recovering log #4
-2022/05/11-16:01:40.906 264 Reusing old log E:\Doan\doan\Profile\100079476677685\Default\Session Storage/000004.log 
-2022/05/11-16:01:40.909 264 Delete type=0 #3
-2022/05/11-16:01:40.909 264 Delete type=2 #5
+2022/05/11-16:31:59.501 450c Reusing MANIFEST E:\Doan\doan\Profile\100079476677685\Default\Session Storage/MANIFEST-000001
+2022/05/11-16:31:59.502 450c Recovering log #4
+2022/05/11-16:31:59.508 450c Reusing old log E:\Doan\doan\Profile\100079476677685\Default\Session Storage/000004.log 
