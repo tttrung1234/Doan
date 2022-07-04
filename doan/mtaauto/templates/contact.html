@@ -1,0 +1,9 @@
+{% comment %}
+<form action="{%url 'saveContact' %}" method="post">
+  {% csrf_token %} {{cf.as_p}}
+  <input type="submit" />
+</form>
+{% endcomment %} {%for item in cf%}
+<a href="{%url 'detailContact' item.id %}"> {{item.username}} </a>
+
+{%endfor%}

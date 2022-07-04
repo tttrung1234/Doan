@@ -1,1 +1,5 @@
-[11188:9600:0511/223638.031:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[1888:19628:0524/215209.053:WARNING:backend_impl.cc(1827)] Destroying invalid entry.
+[1888:17468:0524/215221.286:ERROR:device_event_log_impl.cc(214)] [21:52:21.287] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
+[1888:17468:0524/215221.314:ERROR:device_event_log_impl.cc(214)] [21:52:21.314] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: A device attached to the system is not functioning. (0x1F)
+[1888:17468:0524/215241.252:WARNING:controller_impl.cc(1189)] Background download complete, client: 6, completion type: 0, file size:265060
+[1888:17468:0524/215243.646:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.

@@ -16,9 +16,13 @@ import threading
 
 import pathlib
 
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+
+from mtaauto.form import contact_Form
+from mtaauto.models import contactForm
 
 
 def index(request):
@@ -47,7 +51,7 @@ class Cookie:
                 break
 
     def Close_webdriver(self):
-        self.driver.close()
+        self.driver.quit()
 
     def start_chorme(self):
 
@@ -167,10 +171,12 @@ def ThucThiLogin_loadCookie(l):
 
 
 data = None
+trangthai = 0
 
 
 def AutoLike(id):
     global data
+    global trangthai
     arr = []
     with open("UID.txt", "r") as f:
         for line in f:
@@ -180,20 +186,25 @@ def AutoLike(id):
 
     lenUID = np.shape(data)[1]
     data[1][0] = id
+    trangthai = 1
 
-    threads = []
+    for i in range(3):
+        if trangthai == 0:
+            break
 
-    for l in range(7):
+        threads = []
 
-        threads += [threading.Thread(target=ThucThiLogin_loadCookie,
-                                     args={l},)]
+        for l in range(7):
 
-    for t in threads:
+            threads += [threading.Thread(target=ThucThiLogin_loadCookie,
+                                         args={l},)]
 
-        t.start()
+        for t in threads:
 
-    for t in threads:
-        t.join()
+            t.start()
+
+        for t in threads:
+            t.join()
 
     # threads += [threading.Thread(target=ThucThiLogin_loadCookie,
     #                              args={str(data[1]), url},)]
@@ -202,6 +213,13 @@ def AutoLike(id):
     #     t.start()
     # for t in threads:
     #     t.join()
+
+
+def Dongtientrinh():
+    global trangthai
+    print(trangthai)
+    trangthai = 0
+    print(trangthai)
 
 
 def ThucThiLogin_getCookie():
@@ -266,6 +284,10 @@ def Getpost_tuyentruyen(request):
         id = request.GET.get('idKAH')
         print("khong anh huong")
 
+    if 'dongtientrinh' in request.GET:
+        Dongtientrinh()
+        print("dongtientrinh")
+
     # end xử lí like, share, cmt, bao cao, khong anh huong
 
     return render(request, "autofb.html", content)
@@ -285,10 +307,40 @@ def Getpost_phandong(request):
 
 
 def TrinhsatFB(request):
-    import requests
-    test1 = None
-    url = 'https://m.facebook.com/groups/YAN.VietNamOi/permalink/5430846466948584/?m_entstream_source=feed_mobile'
-    r = requests.get(url)
-    test1 = r.text
+    post_data = []
+    # url = 'https://m.facebook.com/groups/YAN.VietNamOi/permalink/5430846466948584/?m_entstream_source=feed_mobile'
+    # r = requests.get(url)
+    # html = r.text
 
-    return render(request, "trinhsatfb.html", {'content': test1})
+    post_data.append(Gethtml("150561547426531"))
+
+    content = {'post_data': post_data}
+
+    return render(request, "trinhsatfb.html", content)
+
+
+def contact(request):
+    cf = contact_Form
+    return render(request, "contact.html", {'cf': cf})
+
+
+def saveContact(request):
+    if request.method == 'POST':
+        cf = contact_Form(request.POST)
+        if cf.is_valid():
+            saveCF = contactForm(
+                username=cf.cleaned_data['username'], email=cf.cleaned_data['email'], body=cf.cleaned_data['body'])
+            saveCF.save()
+            return http.HttpResponse("okoko")
+    else:
+        return http.HttpResponse("not save")
+
+
+def getContact(request):
+    cf = contactForm.objects.all()
+    return render(request, "contact.html", {'cf': cf})
+
+
+def detailContact(request, id):
+    cf = contactForm.objects.get(id=id)
+    return render(request, "detailcontact.html", {'cf': cf})

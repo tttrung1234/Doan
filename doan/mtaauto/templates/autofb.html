@@ -22,7 +22,7 @@
 
           <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
 
-          <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+          <a href="#" data-rel="close" onclick="onClickHandleDongtientrinh()"><i class="entypo-cancel"></i></a>
         </div>
       </div>
 
@@ -179,6 +179,20 @@
       },
       success : function(data) {
         console.log(id);
+      },
+      error : function(data) {}
+    })
+  }
+
+  function onClickHandleDongtientrinh() {
+    jQuery.ajax({
+      url: '/mtaauto/AutoFB',
+      type: 'GET',
+      data: {
+        'dongtientrinh': "dongtientrinh",
+      },
+      success : function(data) {
+        console.log("da dong tien trinh");
       },
       error : function(data) {}
     })
